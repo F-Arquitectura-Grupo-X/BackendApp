@@ -1,6 +1,6 @@
 package com.example.rentstate.properties.api.resource.propertyResource;
 
-import com.example.rentstate.profiles.api.resource.userresource.ResponseUserResource;
+import com.example.rentstate.profiles.api.resource.userresource.UserResponse;
 import com.example.rentstate.properties.domain.model.entities.Property;
 import com.example.rentstate.properties.domain.model.valueobjects.Categories;
 import lombok.Data;
@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -28,7 +27,7 @@ public class ResponsePropertyResource {
     private Long authorId;
     private Long renterId;
     private String urlImg;
-    private List<ResponseUserResource> reservedUsers;
+    private List<UserResponse> reservedUsers;
 
     public ResponsePropertyResource(Property property) {
         this.id = property.getId();
@@ -43,7 +42,7 @@ public class ResponsePropertyResource {
         this.authorId = property.getAuthor().getId();
 
         this.reservedUsers = property.getReservedByUsers().stream()
-                .map(user -> new ResponseUserResource(user))
+                .map(user -> new UserResponse(user))
                 .collect(Collectors.toList());
 
 
@@ -54,7 +53,7 @@ public class ResponsePropertyResource {
         }
     }
 
-    public ResponsePropertyResource setReservedUsers(List<ResponseUserResource> reservedUsers) {
+    public ResponsePropertyResource setReservedUsers(List<UserResponse> reservedUsers) {
         this.reservedUsers = reservedUsers;
         return this;
     }

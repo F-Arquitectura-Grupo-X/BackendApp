@@ -21,9 +21,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User create(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
     public Optional<User> getById(Long userId) {
         return Optional.ofNullable(userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User", userId)));
+    }
+
+    @Override
+    public Optional<User> getByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.example.rentstate.profiles.domain.model.aggregates;
 
 import com.example.rentstate.profiles.api.resource.userresource.UpdateUserResource;
 import com.example.rentstate.profiles.domain.model.valueobjects.Role;
-import com.example.rentstate.security.auth.resource.RegisterRequest;
+import com.example.rentstate.application.controllers.auth.dto.RegisterRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -69,6 +69,7 @@ public class User implements UserDetails {
         password = registerRequest.getPassword();
         role=Role.USER;
     }
+
 
     public void updateUser(UpdateUserResource resource){
         this.name = resource.getName();

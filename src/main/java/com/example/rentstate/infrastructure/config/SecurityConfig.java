@@ -1,14 +1,13 @@
-package com.example.rentstate.security.config;
+package com.example.rentstate.infrastructure.config;
 
 
-import com.example.rentstate.security.config.jwt.JwtAuthenticationFilter;
+import com.example.rentstate.infrastructure.config.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -28,9 +27,8 @@ public class SecurityConfig {
                         csrf.disable())
                 .authorizeHttpRequests(authRequest ->
                         authRequest
-                                .requestMatchers("/auth/**").permitAll()
-                                .requestMatchers("/api/**").permitAll()
-                                .anyRequest().permitAll()
+                                .requestMatchers("auth/**").permitAll()
+                                .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManager->
                         sessionManager

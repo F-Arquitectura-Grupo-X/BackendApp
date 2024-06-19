@@ -1,4 +1,4 @@
-package com.example.rentstate.CORSConfig;
+package com.example.rentstate.infrastructure.config;
 
 import org.springframework.context.annotation.Configuration;
 
@@ -9,16 +9,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
 @Configuration
-public class CorsConfig implements WebMvcConfigurer {
+public class CORSConfig implements WebMvcConfigurer {
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-                //.allowedOrigins("http://localhost:4200")
-                .allowedOrigins("https://renstate2-0.web.app")
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:4200")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("Authorization", "Content-Type")
-                .allowCredentials(true)
-                .maxAge(3600);
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
+
+
 }
 

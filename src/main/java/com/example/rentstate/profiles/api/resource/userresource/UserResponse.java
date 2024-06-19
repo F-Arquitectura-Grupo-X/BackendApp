@@ -2,13 +2,15 @@ package com.example.rentstate.profiles.api.resource.userresource;
 
 import com.example.rentstate.profiles.domain.model.aggregates.User;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
 @Data
 @Getter
 @AllArgsConstructor
-public class ResponseUserResource {
+@Builder
+public class UserResponse {
 
 
     private Long id;
@@ -21,7 +23,7 @@ public class ResponseUserResource {
     private String photoUrl;
     private Integer rankPoints;
 
-    public ResponseUserResource(User user) {
+    public UserResponse(User user) {
 
         this.id = user.getId();
         this.name = user.getName();

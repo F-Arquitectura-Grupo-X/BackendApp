@@ -1,4 +1,4 @@
-package com.example.rentstate.security.auth.resource;
+package com.example.rentstate.application.controllers.auth.dto;
 
 import lombok.Data;
 import lombok.Getter;

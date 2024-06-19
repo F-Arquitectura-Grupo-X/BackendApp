@@ -1,5 +1,4 @@
-package com.example.rentstate.security.config;
-
+package com.example.rentstate.infrastructure.config;
 
 import com.example.rentstate.profiles.infrastructure.persistence.jpa.repositories.UserRepository;
 import lombok.AllArgsConstructor;

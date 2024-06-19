@@ -1,11 +1,8 @@
 package com.example.rentstate.properties.api.resource.postResource;
 
-import com.example.rentstate.profiles.api.resource.userresource.ResponseUserResource;
+import com.example.rentstate.profiles.api.resource.userresource.UserResponse;
 import com.example.rentstate.properties.api.resource.propertyResource.ResponsePropertyResource;
 import com.example.rentstate.properties.domain.model.entities.Post;
-import jakarta.persistence.Column;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +19,7 @@ public class PostResponse {
     private String title;
     private Double price;
     private ResponsePropertyResource property;
-    private ResponseUserResource author;
+    private UserResponse author;
     private Date createdAt;
 
     public PostResponse(Post post) {
@@ -30,7 +27,7 @@ public class PostResponse {
         this.property = new ResponsePropertyResource(post.getProperty());
         this.title = post.getTitle();
         this.price = post.getPrice();
-        this.author = new ResponseUserResource(post.getProperty().getAuthor());
+        this.author = new UserResponse(post.getProperty().getAuthor());
         this.createdAt = post.getCreatedAt();
     }
 }
